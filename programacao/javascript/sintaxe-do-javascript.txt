@@ -1,0 +1,305 @@
+-No Javascript, é de grande importância a concatenação, que junta as partes.
+
+-No Javascript, tranformar de Int e Float respectivamente:
+
+=Number.parseInt ou simplesmente, parseInt
+=Number.parseFloat ou  simplesmente, parseFloat
+=Number, vc deixa o java decidir o que usar conforme o valor vem quebrado ou não.
+
+-No javascript, transformar de number para string:
+
+=String(n)
+=n.toString(), //mesma coisa, só que invertido.
+
+-Formatando Strings
+
+ var s = 'Javascript'
+*'Eu estou aprendendo s'  // Não faz interpolação
+*'Eu estou aprendendo' + s // Usa concatenação
+*Èu estou aprendendo ${s}` // Usa template string, que é concatenação
+
+*s.lenght         //Quantos caracteres a string tem
+*s.toUpperCase()  //tudo para 'MAIÚSCULAS'
+*s.toLowerCase()  //tudo para 'minúsculas'
+*<\br>            //Quebra a linha no html
+
+-Formatando Números
+
+var n1 = 1543.5
+*n1.toFixed(2)   // Escreve o número real para duas casa decimais.
+*n1.toFixed(2).replace('.', ',') // Troca o ponto por uma vírgula
+*n1.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
+// Mostra o valor como se fosse o salário de uma pessoa
+// BRL --> USD (dólar) --> EUR(euro)
+
+-Operadores no JS:
+
+
+*aritméticos:
+
+- + adição
+- - subtração
+- * multiplicação
+- / divisão
+- % calcular o resto
+- ** potenciação
+
+*auto-atribução:
+
+ var n = 3
+- n = n + 4   n += 4 
+- n = 7       
+- n = n - 5   n -= 5
+- n = 2
+- n = n * 4   n *= 4
+- n = 8
+- n = n / 2   n /= 2
+- n = 4
+- n = n ** 2  n **= 2
+- n = 16
+- n = n % 5   n %= 5
+- n = 1
+
+operadores de incremento:
+
+var x = 5
+
+x = x + 1      x += 1     x++
+x = x - 1      x -= 1     x--
+
+*relacionais
+- >
+- < 
+- >=
+- <=
+- ==
+- !=
+
+identidade:
+
+* 5 = 5 // recebe
+* 5 == 5    //true, símbolo de igualdade
+* 5 == '5'  //true
+* 5 === '5' ---> diz se tem o mesmo valor e o mesmo tipo  //false
+* 5 === 5   //true
+
+*lógicos
+
+- !  --> negação
+- && --> conjunção, e (and)
+- || --> disjunção, ou ( our )
+*ternário
+
+- ?
+- :
+
+teste ? true : false
+ 
+* O teste lógico pode ser verdadeiro ou falso
+se verdadeiro: acontece X
+se falso: acontece Y
+
+É como o 'if' ( se ) em outras linguagens
+
+
+Precedência: 
+
+--------------------------------------------------------->
+()      >          !       &&        ||
+**      <
+/       >=
+
+
+DOM:
+
+DOM é um acrônimo para Document Object Model (modelos de objetos para documentos):
+
+Basicamente é um conjunto de objetos dentro do seu navegador que vai dar acesso aos componentes internos do seu website. O DOM não funciona dentro do node.js por exemplo.O DOM está presente quando estou rodando o javascript dentro do meu navegador.
+
+ÁRVORE DOM:
+
+Basicamente a árvore dom começa da raíz, e essa raíz dentro do navegador é chamada de window, então tudo dentro do javascript, a gente chama de window(janela). Então aquela janela do seu navegador, é um objeto DOM. Dentro do window há vários outros objetos, como o location, document, e history. Dentro do document, exite o html, dentro de html, há dois filhos, o head, e o body, eles podem ser chamados de 'child' de html. Já o html é um parenty(pai) de head e body. Ou seja, DOM se comporta como uma árvore hierárquica. Mas dentro de head temos, meta, title, entre outros. E dentro de body temos h1, 2 paragrafos e uma div.
+
+ÁRVORE hierárquica do site do exercicio 06 no curso em vídeo:
+
+		----------------window-------------------
+		|		   |			|
+		|		   |			|
+		|		   |			|
+	    location		document	     history
+				   |
+				   |
+			  --------html--------
+			  |		      |
+			  |		      |
+	    meta-------	head                 body------------------------
+			  |		      |		|	|	|
+			  |		      |		|	|	|
+			title		      h1        p       p      div
+								|
+								|
+							      strong
+
+colocando opções  de navegadores na tela do site:
+
+-window.document.write(window.navigator.appName) --- no caso do google e demais mostrará netscape, que na verdade diz como é o seu comportamento
+
+-window.document.write(window.document.URL)   ----mostra a url
+
+
+-tudo que está dentro do DOM, ou seja a árvore, é um elemento
+
+ Mas como eu posso navegar pela árvore DOM?
+
+ podemos selecionar/ navegar na árvore pela seguinte maneira:
+
+        por Marca
+
+- comando: getElementsByTagName():
+
+//Com ele, você consegue selecionar mais de um elemento
+
+         por ID
+
+- comando: getElementByld()
+
+         por Nome
+
+- comando: getElementByName()
+
+         por Classe
+
+- comando: getElementByClassName()
+
+         por Seletor 
+
+- comando: querySelector()
+		e
+	   querySelectorAll() //plural
+
+
+     Recebendo dados via teclado
+
+window.prompt("Olá , qual é o seu nome?")
+
+     EVENTOS DOM:
+
+É tudo aquilo que possa acontecer com qualquer elemento:
+
+Por exemplo, quando utilizamos os efeitos do mouse em uma div qualquer, acontece esses eventos:
+
+- mouseenter;
+entrou na div
+
+- mousemove;
+moveu-se com o mouse pela div
+
+- mousedown;
+apertou e segurou
+
+- mouseup;
+soltou o botão
+
+- click;
+deu um clique rápido
+
+- mouseout;
+saiu da div
+
+     FUNÇÕES
+
+Uma função em javascript, é um conjunto de códigos, é um conjunto de dados, que vão ser executadas, só quando o evento ocorrer.
+
+ex: 
+Estou programando dez linhas ( que recebe o nome de bloco ), e todos esses códigos são executados automaticamente. Agora com a função, esse bloco só vai ser executado, quando u clicar em uma div.
+
+Para que isso ocorra, é necessário que esse bloco colocado entre chaves.
+Assim, devemos colocar antes do início das chaves uma function.
+
+function{
+
+	BLOCO	
+
+}
+
+Mas para que esse método possa funcionar, devemos atribuir um nome para essa função, e geralmente, os nomes das funções, são ações que podemos fazer, ou seja, nomes de ação. Opcionalmente, podemos colocar dentro dos parênteses, alguns parâmetros ( 1 ou ++):
+
+function ação(param) {
+
+      BLOCO
+
+}
+
+
+     CONDIÇÕES:
+
+   if {
+
+   true
+
+   }else{
+
+   false
+
+   }
+
+    HÁ DOIS TIPOS DE CONDIÇÃO:
+
+SIMPLES:				NORMAL: 
+					
+if(condição) {				if(condição) {
+
+true					true
+
+}					}else{
+					
+					false		
+					
+					}
+
+     CONDIÇÕES ANINHADAS
+
+É pegar uma condição composta, e colocar mais condições dentro dela.
+
+Um dos exemplos de condições aninhadas é o "ELSE IF".
+
+      CONDIÇÃO MÚLTIPLA
+
+É muito útil no mundo d programação, principalmente quando trabalhamos com valores fixos.
+Ela não serve muito para intervalos de valor com um bom dia, boa tarde, boa noite, como nos exemplos.
+Essa condição múltipla não tem a possibilidade apenas do sim ou não, mas também testando outros valores (fixos), os seus caminhos não são testados com condições, mas sim expressões com determinados valores, e enfim, voltamos para o fluxo normal do programa.
+
+exemplo de uma condição múltipla:
+
+SWITCH (expressão){
+
+   case valor 1:
+
+          bloco
+
+   	  break
+   case valor 2:
+
+          bloco
+
+   	  break
+   case valor 3:
+
+          bloco
+
+   	  break
+   default: 
+
+          bloco
+
+   	  break
+
+// O break é obrigatório, com exceção na última, que é opcional, mas vamos colocar sempre.
+
+    PEGANDO HORAS OU DEMAIS
+
+var agora = new Date()
+//Sempre vai ser Date
+
+var hora = agora.getHours()
+//Vc pode trocar o getHours, por getYears, etc...

@@ -1,0 +1,97 @@
+
+alerta em navegadores:
+
+-window.alert("Mensagem")
+//No jvascript não é necessário no ponto e vírgula.
+//se quiser pode retirar o window
+
+
+-window.alert(p1.innerText)
+//o p1 é variável declarada com o valor do respectivo parágrafo
+//desse modo com o'HTML', o nome não vem destacado, para isso substitua o HTML por
+Text 
+
+getElementsByTagName():
+
+//precisa adicionar um valor à uma variável qualquer:
+
+exemplo:
+<p>Lorem Ipsum<p>  
+
+// vamos criar um parágrafo no html
+
+var p1 = window.document.getElementsByTagName("p")[0] 
+
+// como o 'Elements' está no plural, deve-se usar o colchete. 
+
+// atribuindo esse parágrafo ao p1, o '[0]' funciona como índice, se fosse o parágrafo 2, ficaria '[1]', e assim, sucessivamente.
+
+atribuindo cor no body por meio do DOM:
+
+var corpo = window.document.body
+
+//aqui, atribuimos o body para a variável corpo.
+
+corpo.style.background = 'black'
+
+//pronto!
+
+write significa 'escrever', ele basicamente escreve qualquer mensagem no corpo body,
+
+
+diferença entre 'window.alert(p1.innerText)' e 'window.alert(p1.InnerHTML)'
+
+//p1 é uma variável declarada
+//A diferença é que o HTML não 
+
+identificação e modificações de variáveis (texto) ID:
+
+<div id='msg'>Clique em mim</div>
+//vamos usar o id para identificar uma mensagem
+
+var d = window.document.getElementById('msg')
+//não precisa do colchetes, pq está no singular
+//agora é só atribuir um valor que é o texto 'clique em mim' para a variável
+// para sair no navegador: document.write(d.innerText)
+
+//Para modificar há duas maneiras, a simples e a complexa:
+
+d.innerText = "Outra mensagem"
+//simples
+
+window.document.getElementById('msg').innerText = 'Olá!'
+//complexa
+
+identificação e modificações de variáveis (texto) name:
+
+
+var d = window.document.getElementsByName('msg')[0]
+//atribuindo valor
+
+d.innerText = 'Olá'
+//modificação simples
+
+window.document.getElementByName('msg').innerText = 'Olá!
+//modificação complexa
+
+identificação e modificações de variáveis (texto) Selector:
+
+<div id='msg'>Clique em mim</div>
+//pode utilizar o ID
+
+var d = window.document.querySelector('div#msg')
+
+//Toda div é representada por '#'
+//Tod classe é representada por um ponto'.'
+
+   INPUT
+
+são linhas para receber dados do usuário, como um formulário.
+
+
+   PARA ESCREVER NA TELA DO NAVEGADOR
+
+document.write("Olá Mundo!!!")
+
+ //Se vc usar innerHTML ao invés de innerText vc poderá fazer diferentes códigos como se estivesse no HTML
+

@@ -1,0 +1,12 @@
+Livros javascript:
+
+-Javascript: O guia definitivo;
+
+-Javascript: O guia do programador;
+
+guias de referência gratuitos:
+
+- Mozilla url: https://www.mozilla.org;
+- Ecma url: https://www.ecma-international.org;
+
+
