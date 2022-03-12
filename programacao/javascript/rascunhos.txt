@@ -95,3 +95,15 @@ document.write("Olá Mundo!!!")
 
  //Se vc usar innerHTML ao invés de innerText vc poderá fazer diferentes códigos como se estivesse no HTML
 
+
+      UTILIZE O MODO DE DEPURAÇÃO DO DEBUG
+
+    O debug permite ver o código e todo o seu desempenho, passo a passo 
+
+
+
+      FUNÇÕES
+
+São ações executadas assim que são chamadas ou em decorrência de algum evento.
+
+Uma função pode receber parâmetros e retornar um resultado.
