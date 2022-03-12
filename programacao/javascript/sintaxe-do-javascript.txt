@@ -303,3 +303,103 @@ var agora = new Date()
 
 var hora = agora.getHours()
 //Vc pode trocar o getHours, por getYears, etc...
+
+
+       CRIANDO TAG IMG NO JS DINAMICAMENTE
+
+1°:
+
+var img = document.createElement('img')
+
+//Aqui vc está criando um objeto, criando a tag, e atribuindo o valor dessa tag no objeto img
+
+
+2°:
+
+img.setAttribute('id', 'nome')
+
+//Aqui vc está colocando a propriedade id com um nome qualquer
+
+
+3°: 
+
+img.setAttribute('src', 'img/foto.png')
+
+//Aqui vc está atribuindo uma foto e o seu caminho no src, que é a propriedade na qual faz aparecê-la no img
+
+
+
+        VARIÁVEIS SIMPLES  x  VARIÁVEIS COMPOSTAS
+
+variáveis simples só 
+conseguem armazenar um valor 
+por vez.
+
+Variáveis compostas devem ser 
+capazes de armazenar vários 
+valores em uma mesma estrutura, possuindo
+um índice para cada valor, que por sua vez
+vai do [0] até o indice desejável.
+
+
+
+        	VETOR
+
+É composto de elementos, um elemento de um vetor é um par que agrupa
+o espaço da memória, o valor colocado dentro dele, e o indice(chave).
+
+ex:     let num = [5,8,4]
+
+			puxando valores por indice e apresentando:
+
+5 >>> 0			console.log(num[0])
+8 >>> 1			console.log(num[1])
+4 >>> 2			console.log(num[2])
+
+
+buscando valores e mostrando o indice :
+num.indexOf(7)
+console.log(num.indexOf(5)) ----->  indice 0
+console.log(num.indexOf(8)) ----->  indice 1 
+console.log(num.indexOf(4)) ----->  indice 2
+console.log(num.indexOf(3)) ----->  -1 >> significa que não há um indice com esse valor
+
+			acrescentando valores:
+
+			num[3]= 6
+
+			   ou
+
+			num.push(7)   ----> Ele acrescenta valores na última 						posição do array.
+
+            num = [5,8,4,6]   >>>     num = [5,8,4,6,7]
+			    num.push
+
+
+     saber comprimento do vetor
+
+ num.length   >>> não é um método, mas sim um atributo
+
+Serve para dizer quanto elementos tem no array
+
+
+    colocando todos os elementos em ordem crescente
+
+num.sort()     
+
+ex:  			
+			 num.sort()
+     num = [5,8,4,6,7]     >>>>>    num = [4,5,6,7,8]
+
+
+       código clássico para percurso de um vetor:
+
+for(let pos=0;pos < num.length; pos++){
+	console.log(num[pos]
+}
+
+       código moderno para percurso de um vetor:
+
+for( let pos in num  ){  >>> Se lê assim, "Para cada posição dentro de num, processe o num										         [pos]"
+	console.log(num[pos]
+}
