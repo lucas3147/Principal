@@ -63,4 +63,9 @@ Este documento fornece uma lista dos principais comandos Git e suas descrições
 - `git reset --hard`: Reseta o índice e a árvore de trabalho para o último commit.
 - `git revert <commit>`: Reverte um commit específico, criando um novo commit que desfaz as mudanças.
 
+## 9. Alteração entre Ramos
+
+- `git rebase <main>`: Re-aplicar commits de uma branch sobre outra.
+- `git rebase -i main`: Rebase interativo.
+
 Este é um guia básico com os comandos mais comuns. Existem muitos outros comandos e opções no Git para funcionalidades mais avançadas.
