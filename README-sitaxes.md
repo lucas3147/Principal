@@ -202,6 +202,7 @@ public bool TerminaComBarraChar(string texto)
       <td>0.0046 ns</td>
       <td>0.0043 ns</td>
       <td>0,0034 ns</td>
+      <td></td>
     </tr>
     <tr>
       <td>TerminaComBarraChar</td>
@@ -209,6 +210,7 @@ public bool TerminaComBarraChar(string texto)
       <td>0.0023 ns</td>
       <td>0.0021 ns</td>
       <td>0.0010 ns</td>
+      <td></td>
     </tr>
   </tbody>
 </table>
