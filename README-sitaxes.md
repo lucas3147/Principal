@@ -158,3 +158,57 @@ public bool SaoIguaisEficiente()
     </tr>
   </tbody>
 </table>
+
+## Otimizando Suas Funções Startswith E Endswith
+
+**Exemplo de uso**
+
+
+- errado:
+
+```c#
+public bool TerminaComBarraString(string texto)
+{
+    return texto.EndsWith("/");
+}
+```
+
+- certo:
+
+```c#
+public bool TerminaComBarraChar(string texto)
+{
+    return texto. EndsWith('/');
+}
+```
+
+- Ultilizando benchmarking
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Mean</th>
+      <th>Error</th>
+      <th>StuDev</th>
+      <th>GenD</th>
+      <th>Allocated</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>TerminaComBarraString</td>
+      <td>0.6853 ns</td>
+      <td>0.0046 ns</td>
+      <td>0.0043 ns</td>
+      <td>0,0034 ns</td>
+    </tr>
+    <tr>
+      <td>TerminaComBarraChar</td>
+      <td>0.0018 ns</td>
+      <td>0.0023 ns</td>
+      <td>0.0021 ns</td>
+      <td>0.0010 ns</td>
+    </tr>
+  </tbody>
+</table>
