@@ -83,6 +83,8 @@ Este documento fornece uma lista dos principais comandos Git e suas descrições
 6. [Inspeção e Comparação](#inspecao-e-comparacao)
 7. [Atualização e Publicação](#atualizacao-e-publicacao)
 8. [Desfazendo Alterações](#desfazendo-alteracoes)
+9. [Alteração entre ramos](#9-alteração-entre-ramos)
+10. [Salvando alterações em cache](#10-salvando-alterações-em-cache)
 
 ### 1. Visite o site
 
@@ -140,5 +142,22 @@ Este documento fornece uma lista dos principais comandos Git e suas descrições
 
 - `git rebase <main>`: Re-aplicar commits de uma branch sobre outra.
 - `git rebase -i <main>`: Rebase interativo.
+
+### 10. Salvando alterações em cache
+
+- `git stash`: guarda as mudanças não comitadas e limpa o diretório de trabalho.
+- `git stash list`: lista todas as stashes salvas.
+- `git stash apply`: aplica a stash mais recente ao diretório de trabalho.
+- `git stash apply stash@{n}`: aplica uma stash específica ao diretório de trabalho.
+- `git stash pop`: aplica a stash mais recente e a remove da lista de stashes.
+- `git stash pop stash@{n}`: aplica e remove uma stash específica.
+- `git stash branch <nome_da_branch>`: cria uma nova branch a partir de uma stash e aplica a stash na nova branch.
+- `git stash drop stash@{n}`: remove uma stash específica sem aplicá-la.
+- `git stash clear`: remove todas as stashes.
+- `git stash save --keep-index`: guarda apenas as mudanças não adicionadas ao índice.
+- `git stash save --include-untracked`: guarda mudanças em arquivos não rastreados junto com as mudanças rastreadas.
+- `git stash save --all`: guarda todas as mudanças, incluindo arquivos não rastreados e ignorados.
+- `git stash show stash@{n}`: mostra um resumo das mudanças armazenadas na stash especificada.
+- `git stash show -p stash@{n}`: mostra um patch detalhado das mudanças armazenadas na stash especificada.
 
 Este é um guia básico com os comandos mais comuns. Existem muitos outros comandos e opções no Git para funcionalidades mais avançadas.
