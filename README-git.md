@@ -133,6 +133,8 @@ Este documento fornece uma lista dos principais comandos Git e suas descrições
 - `git reset <arquivo>`: Remove um arquivo do staging area.
 - `git reset --hard`: Reseta o índice e a árvore de trabalho para o último commit.
 - `git revert <commit>`: Reverte um commit específico, criando um novo commit que desfaz as mudanças.
+- `git checkout -- <arquivo>`: Desfazer alterações locaisem um arquivo específico antes de ser comitado.
+- `git checkout -- .`: Desfazer todas as alterações locais antes de ser comitado.
 
 ### 9. Alteração entre Ramos
 
