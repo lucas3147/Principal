@@ -85,6 +85,7 @@ Este documento fornece uma lista dos principais comandos Git e suas descrições
 8. [Desfazendo Alterações](#desfazendo-alteracoes)
 9. [Alteração entre ramos](#9-alteração-entre-ramos)
 10. [Salvando alterações em cache](#10-salvando-alterações-em-cache)
+11. [Rastreamento de arquivos](#11-rastreamento-de-arquivos)
 
 ### 1. Visite o site
 
@@ -159,5 +160,10 @@ Este documento fornece uma lista dos principais comandos Git e suas descrições
 - `git stash save --all`: guarda todas as mudanças, incluindo arquivos não rastreados e ignorados.
 - `git stash show stash@{n}`: mostra um resumo das mudanças armazenadas na stash especificada.
 - `git stash show -p stash@{n}`: mostra um patch detalhado das mudanças armazenadas na stash especificada.
+
+### 11. Rastreamento de arquivos
+
+- `git status --untracked-files=all`: lista todos os arquivos não rastreados no diretório de trabalho.
+- `git ls-files --others --exclude-standard`: lista apenas os arquivos não rastreados, excluindo aqueles que são ignorados pelo `.gitignore`.
 
 Este é um guia básico com os comandos mais comuns. Existem muitos outros comandos e opções no Git para funcionalidades mais avançadas.
