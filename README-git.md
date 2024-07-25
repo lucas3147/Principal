@@ -86,6 +86,7 @@ Este documento fornece uma lista dos principais comandos Git e suas descrições
 9. [Alteração entre ramos](#9-alteração-entre-ramos)
 10. [Salvando alterações em cache](#10-salvando-alterações-em-cache)
 11. [Rastreamento de arquivos](#11-rastreamento-de-arquivos)
+12. [Removendo arquivos rastreados](#12-removendo-arquivos-rastreados)
 
 ### 1. Visite o site
 
@@ -165,5 +166,13 @@ Este documento fornece uma lista dos principais comandos Git e suas descrições
 
 - `git status --untracked-files=all`: lista todos os arquivos não rastreados no diretório de trabalho.
 - `git ls-files --others --exclude-standard`: lista apenas os arquivos não rastreados, excluindo aqueles que são ignorados pelo `.gitignore`.
+
+### 12. Removendo arquivos rastreados
+
+- `git clean -n`: Verificar quais arquivos serão afetados
+- `git clean -f`: Remover os arquivos não rastreados
+- `git clean -fd`: Remover diretórios não rastreados 
+- `git clean -fX`: Remover arquivos ignorados no .gitignore
+- `git clean -fx`: Remover arquivos ignorados e não rastreados
 
 Este é um guia básico com os comandos mais comuns. Existem muitos outros comandos e opções no Git para funcionalidades mais avançadas.
