@@ -87,6 +87,7 @@ Este documento fornece uma lista dos principais comandos Git e suas descrições
 10. [Salvando alterações em cache](#10-salvando-alterações-em-cache)
 11. [Rastreamento de arquivos](#11-rastreamento-de-arquivos)
 12. [Removendo arquivos rastreados](#12-removendo-arquivos-rastreados)
+13. [Visualizar arquivos alterados](#13-visualizar-arquivos-alterados)
 
 ### 1. Visite o site
 
@@ -174,5 +175,18 @@ Este documento fornece uma lista dos principais comandos Git e suas descrições
 - `git clean -fd`: Remover diretórios não rastreados 
 - `git clean -fX`: Remover arquivos ignorados no .gitignore
 - `git clean -fx`: Remover arquivos ignorados e não rastreados
+
+### 13. Visualizar arquivos alterados
+
+- `git diff`: Mostra as mudanças não comitadas (arquivos modificados mas não adicionados ao índice).
+- `git diff --cached`: Mostra as mudanças que foram adicionadas ao índice (prontas para o commit).
+- `git diff commit1 commit2`: Mostra as mudanças entre dois commits específicos.
+- `git diff commit1`: Mostra as diferenças entre o `commit1` e a árvore de trabalho atual (não comitada).
+- `git diff -- caminho/do/arquivo`: Mostra as mudanças em um arquivo específico.
+- `git diff --cached -- caminho/do/arquivo`: Mostra as mudanças em um arquivo específico que foram adicionadas ao índice.
+- `git diff --name-only`: Mostra uma lista dos arquivos que foram alterados (sem mostrar as diferenças de conteúdo).
+- `git diff --name-only commit1 commit2`: Mostra uma lista dos arquivos alterados entre dois commits específicos.
+- `git diff --stat`: Mostra um resumo das mudanças com estatísticas.
+- `git show commit-hash`: Mostra o que foi alterado em um commit específico.
 
 Este é um guia básico com os comandos mais comuns. Existem muitos outros comandos e opções no Git para funcionalidades mais avançadas.
