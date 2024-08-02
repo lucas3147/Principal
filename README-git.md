@@ -119,6 +119,8 @@ Este documento fornece uma lista dos principais comandos Git e suas descrições
 - `git checkout <nome-da-branch>`: Troca para a branch especificada.
 - `git merge <nome-da-branch>`: Mescla a branch especificada na branch atual.
 - `git branch -d <nome-da-branch>`: Deleta a branch especificada.
+- `git branch -r`: Lista todas as branches remotas do repositório.
+- `git branch -a`: Lista todas as branches (locais e remotas) do repositório.
 
 ### 6. Inspeção e Comparação
 
