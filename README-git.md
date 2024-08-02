@@ -176,7 +176,17 @@ Este documento fornece uma lista dos principais comandos Git e suas descrições
 - `git clean -fX`: Remover arquivos ignorados no .gitignore
 - `git clean -fx`: Remover arquivos ignorados e não rastreados
 
-### 13. Visualizar arquivos alterados
+### 13. Recuperando arquivos salvos em logs
+
+- `git reflog`: Verifique o reflog para encontrar o hash do commit anterior ao reset
+- `git reset --hard def5678`: Encontre a linha pelo hash do log correspondente ao commit que você deseja recuperar
+- `git reset --hard HEAD@{1}`: Encontre a linha pelo cabeçalho do log correspondente ao commit que você deseja recuperar  
+
+### 14. Alterações de commits
+
+- `git commit --amend --author="Novo Autor <email@exemplo.com>"`: Altere o autor e e-mail do último commit
+
+### 15. Visualizar arquivos alterados
 
 - `git diff`: Mostra as mudanças não comitadas (arquivos modificados mas não adicionados ao índice).
 - `git diff --cached`: Mostra as mudanças que foram adicionadas ao índice (prontas para o commit).
