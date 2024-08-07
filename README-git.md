@@ -154,6 +154,7 @@ Este documento fornece uma lista dos principais comandos Git e suas descrições
 - `git stash list`: lista todas as stashes salvas.
 - `git stash apply`: aplica a stash mais recente ao diretório de trabalho.
 - `git stash apply stash@{n}`: aplica uma stash específica ao diretório de trabalho.
+- `git stash push -m "descrição do stash"`: Aplica o stash com a descrição informada.
 - `git stash pop`: aplica a stash mais recente e a remove da lista de stashes.
 - `git stash pop stash@{n}`: aplica e remove uma stash específica.
 - `git stash branch <nome_da_branch>`: cria uma nova branch a partir de uma stash e aplica a stash na nova branch.
