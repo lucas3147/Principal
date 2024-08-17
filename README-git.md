@@ -103,7 +103,9 @@ Este documento fornece uma lista dos principais comandos Git e suas descrições
 
 - `git init`: Inicializa um novo repositório Git.
 - `git clone <url>`: Clona um repositório existente de um URL.
+- `gh auth login`: Logar conta do github.
 - `gh repo create`: Cria um novo repositório remoto.
+- `gh repo view -w`: Visualizar o repositório remoto.
 
 ### 4. Controle de Versão
 
