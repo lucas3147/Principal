@@ -173,6 +173,7 @@ Este documento fornece uma lista dos principais comandos Git e suas descrições
 
 - `git status --untracked-files=all`: lista todos os arquivos não rastreados no diretório de trabalho.
 - `git ls-files --others --exclude-standard`: lista apenas os arquivos não rastreados, excluindo aqueles que são ignorados pelo `.gitignore`.
+- `git rm -r --cached nao_rastreada/`: limpar o cache do Git para que ele pare de rastrear esses arquivos
 
 ### 12. Removendo arquivos rastreados
 
