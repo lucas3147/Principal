@@ -206,10 +206,10 @@ Este documento fornece uma lista dos principais comandos Git e suas descrições
 - `git diff --stat`: Mostra um resumo das mudanças com estatísticas.
 - `git show commit-hash`: Mostra o que foi alterado em um commit específico.
 
-Este é um guia básico com os comandos mais comuns. Existem muitos outros comandos e opções no Git para funcionalidades mais avançadas.
-
 ### 16. Configurar SSH
 
 - `git remote set-url origin git@github-conta2:usuario/repo.git`: Alterar o URL remoto para utilizar o host configurado (por exemplo, github-conta2), substitua `usuario/repo.git` com o caminho do repositório.
 - `ssh -T github-conta2`: Verificar se está funcionando corretamente com a chave SSH correta.
 - `git remote set-url origin git@github.com-lucas:Lucas3147/Ferramentas.git`: Configurado para a minha conta principal.
+
+Este é um guia básico com os comandos mais comuns. Existem muitos outros comandos e opções no Git para funcionalidades mais avançadas.
