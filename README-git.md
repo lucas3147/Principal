@@ -119,6 +119,7 @@ Este documento fornece uma lista dos principais comandos Git e suas descrições
 
 - `git branch`: Lista todas as branches no repositório.
 - `git branch <nome-da-branch>`: Cria uma nova branch.
+- `git checkout --orphan nova-branch`:  cria uma branch sem nenhum commit anterior da branch atual.
 - `git checkout <nome-da-branch>`: Troca para a branch especificada.
 - `git merge <nome-da-branch>`: Mescla a branch especificada na branch atual.
 - `git branch -d <nome-da-branch>`: Deleta a branch especificada.
