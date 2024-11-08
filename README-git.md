@@ -138,6 +138,7 @@ Este documento fornece uma lista dos principais comandos Git e suas descrições
 - `git fetch`: Baixa objetos e referências do repositório remoto.
 - `git pull`: Baixa e integra mudanças do repositório remoto na branch atual.
 - `git push`: Envia commits para o repositório remoto.
+- `git push origin :[nome-da-branch]`: Exclusão de uma branch no repositório remoto.
 
 ### 8. Desfazendo Alterações
 
