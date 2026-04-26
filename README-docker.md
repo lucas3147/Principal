@@ -5,6 +5,11 @@
     - [Dependência de ferramentas](#dependência-de-ferramentas)
 - [Instalação do docker](#instalação-do-docker)
     - [Testando se realmente está instalado](#testando-se-realmente-está-instalado)
+- [Comandos Básicos do docker](#comandos-básicos-do-docker)
+    - [comando docker run <container>](#comando-docker-run)
+    - [comando docker ps](#comando-docker-ps)
+    - [comando docker ps -a](#comando-docker-ps--a)
+    - [comando docker rm](#comando-rm)
 
 ## O que é o docker?
 
@@ -45,3 +50,51 @@ Verificando se está instalado:
 ```cmd
 docker --version
 ```
+
+## Comandos básicos do docker
+
+Iniciaremos o estudo com docker com o primeiro container "Hello-World"
+
+### comando docker run <image>
+
+Comando utilizado para rodar um container pela sua imagem.
+
+```cmd
+docker run hello-world
+```
+
+O processo "run", procura na máquina local o container "hello-world", se ele não encontra, ele procura pela internet.
+
+Run Container
+
+```
+    comando -> máquina local / internet (download do container)
+```
+
+### comando docker ps
+
+Comando utilizado para listar os containers em execução
+
+### comando docker ps -a
+
+Comando utilizado para listar todos os containers
+
+### comando rm <id-container>
+
+Remove um container pelo seu identificador (id)
+
+### comando docker images
+
+Lista as imagens
+
+### comando docker rmi <uid-images>
+
+Remove a imagem pelo seu identificador
+
+### O que é uma Imagem ?
+
+Uma imagem é um modelo de um container
+
+Imagem = Modelo de um container
+
+Um processo de configuração de como um container funciona.
