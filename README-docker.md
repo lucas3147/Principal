@@ -6,10 +6,6 @@
 - [Instalação do docker](#instalação-do-docker)
     - [Testando se realmente está instalado](#testando-se-realmente-está-instalado)
 - [Comandos Básicos do docker](#comandos-básicos-do-docker)
-    - [comando docker run <container>](#comando-docker-run)
-    - [comando docker ps](#comando-docker-ps)
-    - [comando docker ps -a](#comando-docker-ps--a)
-    - [comando docker rm](#comando-rm)
 
 ## O que é o docker?
 
@@ -55,42 +51,6 @@ docker --version
 
 Iniciaremos o estudo com docker com o primeiro container "Hello-World"
 
-### comando docker run <image>
-
-Comando utilizado para rodar um container pela sua imagem.
-
-```cmd
-docker run hello-world
-```
-
-O processo "run", procura na máquina local o container "hello-world", se ele não encontra, ele procura pela internet.
-
-Run Container
-
-```
-    comando -> máquina local / internet (download do container)
-```
-
-### comando docker ps
-
-Comando utilizado para listar os containers em execução
-
-### comando docker ps -a
-
-Comando utilizado para listar todos os containers
-
-### comando rm <id-container>
-
-Remove um container pelo seu identificador (id)
-
-### comando docker images
-
-Lista as imagens
-
-### comando docker rmi <uid-images>
-
-Remove a imagem pelo seu identificador
-
 ### O que é uma Imagem ?
 
 Uma imagem é um modelo de um container
@@ -98,3 +58,24 @@ Uma imagem é um modelo de um container
 Imagem = Modelo de um container
 
 Um processo de configuração de como um container funciona.
+
+### Comandos
+
+- `docker run <name-image>`: Roda um container pela sua imagem. Ex.: docker run hello-world. O processo "run", procura na máquina local o container "hello-world", se ele não encontra, ele procura pela internet.
+- `docker ps`: Lista os containers em execução.
+- `docker ps -a`: Lista todos os containers.
+- `docker rm <id-container>`: Remove um container pelo seu identificador (id).
+- `docker images`: Lista as imagens baixadas.
+- `docker rmi <id-image>`: Remove a imagem pelo seu identificador.
+- `docker pull <name-image>`: Baixa / Atualiza a última versão de uma imagem.
+- `docker stop <id-container>`: Para um container pelo seu identificador.
+- `docker run --name <name-container> <name-image>`: Executa um container com um nome específico pela sua imagem. 
+- `docker run <name-image>:latest`: Roda um container pela sua imagem utilizando a sua última versão.
+- `docker run <name-image>:<number-version>`: Roda um container pela sua imagem utilizando a versão especificada.
+
+## Explorando o DockerHub
+
+É um repositório de imagens online do Docker. 
+Existem imagens maliciosas, é necessário ter certo receio antes de baixar qualquer coisa no seu computador.
+
+- [docker-hub](https://hub.docker.com/)
