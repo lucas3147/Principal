@@ -72,6 +72,7 @@ Um processo de configuração de como um container funciona.
 - `docker run --name <name-container> <name-image>`: Executa um container com um nome específico pela sua imagem. 
 - `docker run <name-image>:latest`: Roda um container pela sua imagem utilizando a sua última versão.
 - `docker run <name-image>:<number-version>`: Roda um container pela sua imagem utilizando a versão especificada.
+- `docker run -it --rm -v ${pwd}:/app -w /app -p 3000:3000 node:18 bash`: (Compatível apenas no **PowerShell**) Cria um container e configura para subir um projeto específico. Veja mais em 
 
 ## Explorando o DockerHub
 
@@ -79,3 +80,23 @@ Um processo de configuração de como um container funciona.
 Existem imagens maliciosas, é necessário ter certo receio antes de baixar qualquer coisa no seu computador.
 
 - [docker-hub](https://hub.docker.com/)
+
+## Criando seu primeiro container com Node.js
+
+Antes de mais nada navegue até a pasta do seu projeto.
+
+Após isso, rode o comando:
+
+- `docker run -it --rm -v ${pwd}:/app -w /app -p 3000:3000 node:18 bash`: PowerShell
+- `docker run -it --rm -v ${PWD}:/app -w /app -p 3000:3000 node:18 bash`: Linux
+- `docker run -it --rm -v %cd%:/app -w /app -p 3000:3000 node:18 bash`: CMD
+
+Explicação do comando:
+
+- `-it` - Você consegue usar o container como se fosse um terminal normal.
+- `--rm` - Remove o container automaticamente quando você sair.
+- `-v ${pwd}:/app` - Especifica para o docker onde você quer colocar os arquivos de projeto no container.
+- `-w /app` - Depois de criar a pasta no container, acesse a pasta /app.
+- `-p 3000:3000` - Espelhamento de porta do container para a porta do computador atual.
+- `node:18` - Especifica a imagem e versão dela (se não tiver na máquina puxa do docker-hub)
+- `bash` - Após criar o container, pede acesso para incluir comandos Linux dentro do terminal do container.
