@@ -76,6 +76,11 @@ Um processo de configuração de como um container funciona.
 - `docker build -t meu-projeto-node .`: Cria e configura uma imagem utilizando o arquivo Dockerfile. Veja mais em [primeira-imagem-dockerfile](#explicação-do-comando-primeira-imagem-dockerfile)
 - `docker run -p 3000:3000 --name meu-servidor meu-projeto-node`: Sobe e executa um container com o nome "meu-servidor" utilizando a imagem "meu-projeto-node" com espelhamento de portas do docker para o computador atual.
 - `docker build -t meu-projeto-node:v1 .`: Cria e configura uma imagem utilizando o arquivo Dockerfile com uma versão específica chamada v1.
+- `docker volume create banco`: Cria um volume nomeado com o nome "banco".
+- `docker volume ls`: Lista todos os volumes nomeados criados no docker.
+- `docker volume rm banco`: Remove um volume nomeado pelo seu nome, no caso "banco".
+- `docker run -v banco:/app/data -p 3000:3000 --name meu-servidor meu-node`: Executa um container "meu servidor" com espelhamento de porta e associa um container ao volume chamado "banco", o volume estará associado a pasta /app/data dentro do container, utilizando a imagem "meu-node".
+- `docker run -v ${pwd}:/app -p 3000:3000 --name meu-servidor meu-node`: Cria um container com bind mount associado na pasta :/app dentro do container com espelhamento de porta, nome "meu-servidor" utilizando a imagem "meu-node".
 
 ## Explorando o DockerHub
 
@@ -180,4 +185,81 @@ node_modules
 npm-debug.log
 .git
 .env
+```
+
+## Trabalhando com volumes 1
+
+Utilizar volumes no docker significa disponibilizar espaço no HD do computador/servidor para armazenar as aplicações.
+
+Utilização:
+
+- Os container após excluidos todos os dados presentes nele serão excluidos automaticamente, para evitar isso, utilizamos os volumes que são locais onde são armazenado informações.
+
+**Existem dois tipos de volumes**
+
+1. Volume nomeado:
+    - Gerenciado pelo próprio docker
+    - Utlizado em: Banco de dados, uploads
+    - Mais de um container pode utilizar o mesmo volume
+
+2. Bind Mounts:
+    - Associa uma pasta do PC Local (Host) à uma pasta dentro do container.
+    - O que coloca de informação nessa pasta do Host, vai aparecer no container, e vice-versa.
+    - Utilizado em Ambientes de desenvolvimento - Com isso não é necessário dar um build na imagem e depois criar um container novo.
+
+## Trabalhando com volumes 2
+
+**Bind Mounts**
+
+Bind Mounts são criados no momento que executo um container pela sua imagem.
+
+Ele cria um vínculo entre a pasta do computador que está rodando o docker (host) e a pasta do container.
+
+### Explicação do comando meu-primeiro-bind-mount
+
+- `docker run -v ${pwd}:/app -p 3000:3000 --name meu-servidor meu-node`
+
+Explicação:
+
+- `-v ${pwd}:/app`: monta uma pasta da máquina dentro do container.
+    - Síntaxe: `-v origem:destino`
+    - `${pwd}` -> diretório atual
+    - `/app`   -> pasta principal do container
+
+### Pequeno problema
+
+Arquivos salvos na pasta influenciam no container, porém, em projetos como o node por exemplo, o fato de salvar o arquivo, não significa que o arquivo será atualizado automaticamente no navegador, porque o servidor node continua rodando mesmo após o arquivo ser alterado no ambiente de desenvolvimento. 
+
+**Para puxar o arquivo ajustado, digite os comandos**
+
+- `docker stop meu-servidor`
+- `docker start meu-servidor`
+
+O container vai utilizar os arquivos da pasta roteada.
+
+### Melhorando o Dockerfile (com projeto Node)
+
+Remova os containers utilizando a imagem do node versão 18.
+
+Na versão 20 em diante, o node possui um comando chamado --watch
+
+- `"dev": "node --watch index.js"`
+
+É um comando utilizando para o Node monitorar o arquivo chamado index.js`
+
+Dockerfile
+
+```
+FROM node:22
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["npm", "run", "dev"]
 ```
