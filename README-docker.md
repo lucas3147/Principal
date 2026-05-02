@@ -75,6 +75,7 @@ Um processo de configuração de como um container funciona.
 - `docker run -it --rm -v ${pwd}:/app -w /app -p 3000:3000 node:18 bash`: (Compatível apenas no **PowerShell**) Cria um container e configura para subir um projeto específico. Veja mais em [primeiro-container-proprio](#explicação-do-comando-primeiro-container-proprio)
 - `docker build -t meu-projeto-node .`: Cria e configura uma imagem utilizando o arquivo Dockerfile. Veja mais em [primeira-imagem-dockerfile](#explicação-do-comando-primeira-imagem-dockerfile)
 - `docker run -p 3000:3000 --name meu-servidor meu-projeto-node`: Sobe e executa um container com o nome "meu-servidor" utilizando a imagem "meu-projeto-node" com espelhamento de portas do docker para o computador atual.
+- `docker build -t meu-projeto-node:v1 .`: Cria e configura uma imagem utilizando o arquivo Dockerfile com uma versão específica chamada v1.
 
 ## Explorando o DockerHub
 
@@ -115,7 +116,7 @@ FROM node:18
 
 WORKDIR /app
 
-COPY package*.json./
+COPY package*.json ./
 RUN npm install
 
 COPY . .
@@ -124,6 +125,14 @@ EXPOSE 3000
 
 CMD ["npm", "start"]
 ```
+
+**Explicação comandos dockerfile**
+
+- `FROM <imagem>:<versao>` - Utilize a imagem com a versão especificada.
+- `WORKDIR /app` - Crie e configure uma pasta dentro do contaner pelo caminho "/app"
+- `COPY <origem> <origem>` - copiar arquivos da sua máquina para dentro da imagem Docker.
+- `EXPOSE 3000` - Exporte a porta 3000 do docker para espelhamento (posteriormente).
+- `CMD ["npm", "start"]` - Comandos do prompt utilizados dentro do contexto do container, expressos em array de string.
 
 Feito a primeira configuração dentro do arquivo, iremos criar uma imagem própria para utilizar esse arquivo de configuração para rodar o nosso projeto. Na prática, é uma imagem que utiliza o node com as minhas configurações.
 
@@ -147,4 +156,28 @@ Depois de utilizar esse comando, toda vez que alterar o código do seu projeto, 
 Caso o container já exista, é necessário criar um novo, para utilizar a nova versão da imagem.
 
 Os containers são criados com um tipo de versão das imagens, mesmo que essa versão não exista na máquina, pois foram atualizada com o build.
+```
+
+## Boas práticas no Dockerfile
+
+Boas práticas:
+
+- Realizar comandos sequenciais, ordem correta:
+    - 1° - Pegar os arquivos de projeto e colocar dentro do container.
+    - 2° - Comandos para configurar arquivos dentro do container.
+    - 3° - Roda o projeto.
+
+Além disso, utilizamos um arquivo chamado **.dockerignore**
+
+### .DOCKERIGNORE
+
+É um arquivo do docker para ignorar arquivos temporários na pasta do seu projeto, o docker utiliza esse arquivo para excluir arquivos quando você utiliza o comando: **COPY <origem> <destino>**.
+
+Exemplo do conteúdo .dockerignore:
+
+```
+node_modules
+npm-debug.log
+.git
+.env
 ```
