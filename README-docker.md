@@ -72,7 +72,9 @@ Um processo de configuração de como um container funciona.
 - `docker run --name <name-container> <name-image>`: Executa um container com um nome específico pela sua imagem. 
 - `docker run <name-image>:latest`: Roda um container pela sua imagem utilizando a sua última versão.
 - `docker run <name-image>:<number-version>`: Roda um container pela sua imagem utilizando a versão especificada.
-- `docker run -it --rm -v ${pwd}:/app -w /app -p 3000:3000 node:18 bash`: (Compatível apenas no **PowerShell**) Cria um container e configura para subir um projeto específico. Veja mais em 
+- `docker run -it --rm -v ${pwd}:/app -w /app -p 3000:3000 node:18 bash`: (Compatível apenas no **PowerShell**) Cria um container e configura para subir um projeto específico. Veja mais em [primeiro-container-proprio](#explicação-do-comando-primeiro-container-proprio)
+- `docker build -t meu-projeto-node .`: Cria e configura uma imagem utilizando o arquivo Dockerfile. Veja mais em [primeira-imagem-dockerfile](#explicação-do-comando-primeira-imagem-dockerfile)
+- `docker run -p 3000:3000 --name meu-servidor meu-projeto-node`: Sobe e executa um container com o nome "meu-servidor" utilizando a imagem "meu-projeto-node" com espelhamento de portas do docker para o computador atual.
 
 ## Explorando o DockerHub
 
@@ -91,7 +93,7 @@ Após isso, rode o comando:
 - `docker run -it --rm -v ${PWD}:/app -w /app -p 3000:3000 node:18 bash`: Linux
 - `docker run -it --rm -v %cd%:/app -w /app -p 3000:3000 node:18 bash`: CMD
 
-Explicação do comando:
+### Explicação do comando primeiro-container-proprio:
 
 - `-it` - Você consegue usar o container como se fosse um terminal normal.
 - `--rm` - Remove o container automaticamente quando você sair.
@@ -100,3 +102,49 @@ Explicação do comando:
 - `-p 3000:3000` - Espelhamento de porta do container para a porta do computador atual.
 - `node:18` - Especifica a imagem e versão dela (se não tiver na máquina puxa do docker-hub)
 - `bash` - Após criar o container, pede acesso para incluir comandos Linux dentro do terminal do container.
+
+## Introdução ao Dockerfile
+
+É um arquivo de configuração do docker paa não precisar digitar comandos toda vez que subir um ambiente para o container.
+
+Exemplo de uso:
+
+Nome do arquivo: **Dockerfile**
+```
+FROM node:18
+
+WORKDIR /app
+
+COPY package*.json./
+RUN npm install
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["npm", "start"]
+```
+
+Feito a primeira configuração dentro do arquivo, iremos criar uma imagem própria para utilizar esse arquivo de configuração para rodar o nosso projeto. Na prática, é uma imagem que utiliza o node com as minhas configurações.
+
+### Explicação do comando primeira-imagem-dockerfile
+
+Primeiro, navegue até a pasta do seu projeto, depois execute:
+
+- `docker build -t meu-projeto-node .`
+
+Explicação:
+
+- `docker build`: O comando build manda o Docker construir uma imagem, ele lê as instruções do arquivo **Dockerfile**.
+- `-t meu-projeto-node`: O parâmetro -t especifica o nome da imagem.
+- `.`: O ponto significa: "Use a pasta atual como contexto da build.
+
+**Observação**
+
+```
+Depois de utilizar esse comando, toda vez que alterar o código do seu projeto, precisa dar um build na imagem, porque ela não atualiza sozinha. 
+
+Caso o container já exista, é necessário criar um novo, para utilizar a nova versão da imagem.
+
+Os containers são criados com um tipo de versão das imagens, mesmo que essa versão não exista na máquina, pois foram atualizada com o build.
+```
