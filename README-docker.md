@@ -84,6 +84,7 @@ Um processo de configuração de como um container funciona.
 - `docker network ls`: Lista todas as redes do host.
 - `docker network create [nome-rede]`: Cria uma nova rede Docker.
 - `docker run -p 3000:3000 --network rede-xyz --name frontend meu-node`: Sobe um container com espelhamento de porta do host "3000", utilizando a rede "rede-xyz", com o nome "frontend", na imagem "meu-node"
+- `docker run -p 4000:3000 -p 4001:5000 --name meu-server meu-node`: Subindo um container com múltiplos espelhamento de portas com o nome "meu-server" e imagem "meu-node".
 
 ## Explorando o DockerHub
 
@@ -318,4 +319,31 @@ Se o container backend estivesse com a porta 5000, ficaria assim:
 
 ```
 http://backend:5000/api/test
+```
+
+## Expondo portas e entendendo -p
+
+Primeiro de tudo, o "EXPOSE: 3000" no Dockerfile, não tem um efeito prático, mas apenas para efeito de documentação do projeto.
+
+O que importa de fato é o `-p` na hora de subir o container.
+
+Vejamos o comando:
+
+- `docker run -p 4000:3000 --name meu-server meu-node`
+
+A porta 4000 é a porta do host.
+A porta 3000 é a porta do container.
+Todo o trafego que acontecer na porta 4000 do meu pc, manda para a porta 3000 do container.
+
+### Como usar mais de uma porta no mesmo container?
+
+Em aplicações complexas, pode ser necessário utilizar mais de uma aplicação rodando em paralelo, e por serem independentes, terão portas distintas.
+
+Com isso podemos, ter mais de um espelhamento de portas do host para o mesmo container.
+
+Como fazer ?
+- Use vários **-p**
+
+```
+docker run -p 4000:3000 -p 4001:5000 --name meu-server meu-node
 ```
