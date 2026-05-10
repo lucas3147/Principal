@@ -81,6 +81,9 @@ Um processo de configuração de como um container funciona.
 - `docker volume rm banco`: Remove um volume nomeado pelo seu nome, no caso "banco".
 - `docker run -v banco:/app/data -p 3000:3000 --name meu-servidor meu-node`: Executa um container "meu servidor" com espelhamento de porta e associa um container ao volume chamado "banco", o volume estará associado a pasta /app/data dentro do container, utilizando a imagem "meu-node".
 - `docker run -v ${pwd}:/app -p 3000:3000 --name meu-servidor meu-node`: Cria um container com bind mount associado na pasta :/app dentro do container com espelhamento de porta, nome "meu-servidor" utilizando a imagem "meu-node".
+- `docker network ls`: Lista todas as redes do host.
+- `docker network create [nome-rede]`: Cria uma nova rede Docker.
+- `docker run -p 3000:3000 --network rede-xyz --name frontend meu-node`: Sobe um container com espelhamento de porta do host "3000", utilizando a rede "rede-xyz", com o nome "frontend", na imagem "meu-node"
 
 ## Explorando o DockerHub
 
@@ -262,4 +265,57 @@ COPY . .
 EXPOSE 3000
 
 CMD ["npm", "run", "dev"]
+```
+
+## Redes no Docker
+
+A partir de agora, vamos aprender como realizar a comunicação entre um container e outro.
+
+Vamos supor, dois projetos em containers diferentes:
+
+```
+Container 1: Projeto rodando em Node
+Container 2: Banco de dados MySQL
+```
+
+Eu preciso que o container 1 se comunique com o container 2.
+
+### Rede padrão dos containers: Bridge
+
+Todos os containers por padrão estarão numa rede chamada Bridge.
+
+**Todos os containers dentro da mesma rede, tem acessos um ao outro.**
+
+### Como se conectar em containers diferentes ?
+
+**Exemplo 1:**
+
+```
+Container 1: projeto -> Projeto rodando em Node - rede Bridge
+Container 2: banco -> Banco de dados MongoDB - porta 27017 - rede Bridge
+```
+
+Para realizar a comunicação entre eles, algo parecido com isso:
+
+```
+Container 1 -> mongodb://banco:27017
+```
+
+**Exemplo 2:**
+
+```
+Container 1: frontend -> Projeto rodando em React -> Rede ProjetoXYZ
+Container 2: backend -> Projeto rodando em Python -> Rede ProjetoXYZ
+```
+"
+Comunicação:
+
+```
+http://backend/api/test
+```
+
+Se o container backend estivesse com a porta 5000, ficaria assim:
+
+```
+http://backend:5000/api/test
 ```
