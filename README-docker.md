@@ -85,6 +85,8 @@ Um processo de configuração de como um container funciona.
 - `docker network create [nome-rede]`: Cria uma nova rede Docker.
 - `docker run -p 3000:3000 --network rede-xyz --name frontend meu-node`: Sobe um container com espelhamento de porta do host "3000", utilizando a rede "rede-xyz", com o nome "frontend", na imagem "meu-node"
 - `docker run -p 4000:3000 -p 4001:5000 --name meu-server meu-node`: Subindo um container com múltiplos espelhamento de portas com o nome "meu-server" e imagem "meu-node".
+- `docker run -p 3000:3000 -e AUTHOR=l.lima --name meu-server meu-node`: Subindo um container com espelhamento de porta, utilizando uma variável de ambiente chamada AUTHOR com valor "l.lima", o container possui o nome "meu-server" e imagem "meu-node". 
+- `docker run --env-file .env -p 3000:3000 --name meu-server meu-node`: Sobe um container com um arquivo de ambiente ".env" do node (só funciona se o arquivo estiver na pasta do projeto)
 
 ## Explorando o DockerHub
 
@@ -347,3 +349,26 @@ Como fazer ?
 ```
 docker run -p 4000:3000 -p 4001:5000 --name meu-server meu-node
 ```
+
+## Variáveis de ambiente em Container
+
+Na hora de criar o container, você pode definir variáveis de ambiente, e dentro do container você pode usar essas variáveis para você fazer o que quiser.
+
+**Comando:**
+
+- `docker run -p 3000:3000 -e AUTHOR=l.lima --name meu-server meu-node`: Explicação do comando em [Comandos Básicos do docker](#comandos-básicos-do-docker)
+
+**Como acessar no projeto Node ?**
+
+```js
+const author = process.env.AUTHOR;
+```
+
+**Especificar um arquivo onde estão as variáveis de ambiente:**
+
+Crie um arquivo chamado .env na pasta do seu projeto.
+
+Depois rode o comando:
+
+- ``: Veja a explicação em [Comandos Básicos do docker](#comandos-básicos-do-docker)
+
