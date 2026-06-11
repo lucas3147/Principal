@@ -372,3 +372,16 @@ Depois rode o comando:
 
 - ``: Veja a explicação em [Comandos Básicos do docker](#comandos-básicos-do-docker)
 
+## (Bônus) como acessar dados de uma imagem SQL Server para testes
+
+**Entre no container**
+
+- `docker ps`
+
+**Depois**
+
+- `docker exec -it sqlserver /bin/bash`
+
+**Conectar no SQL Server**
+
+- `/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "SuaSenha"`
