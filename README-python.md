@@ -18,6 +18,17 @@
     * [Conversão entre Lista e Tupla](#conversao-entre-lista-e-tupla)
     * [Desempacotamento](#desempacotamento)
     * [Comparação entre Listas e Tuplas](#comparacao-entre-listas-e-tuplas)
+* [Funções Lambda](#funcoes-lambda)
+    * [Sintaxe](#sintaxe)
+    * [Comparação com `def`](#comparacao-com-def)
+    * [Uso com funções embutidas](#uso-com-funcoes-embutidas)
+    * [Limitações](#limitacoes)
+    * [Quando usar](#quando-usar)
+* [Condição ternária](#condicao-ternaria)
+    * [Sintaxe](#sintaxe)
+    * [Quando utilizar](#quando-utilizar)
+    * [Exemplos](#exemplos)
+
 
 ## Dir
 
@@ -222,3 +233,91 @@ O desempacotamento permite atribuir os elementos de uma tupla diretamente a vár
 
 * **Lista (`[]`)**: mutável, ideal para coleções que podem mudar.
 * **Tupla (`()`)**: imutável, ideal para dados fixos e constantes.
+
+## Funções Lambda
+
+As funções `lambda` são **funções anônimas** (sem nome) usadas para criar funções simples e temporárias. Elas retornam automaticamente o resultado da única expressão que contêm.
+
+### Comandos
+
+* `lambda argumentos: expressão`: cria uma função anônima.
+
+### Sintaxe
+
+A sintaxe de uma função `lambda` é composta pela palavra-chave `lambda`, seguida pelos parâmetros e por uma única expressão. O valor dessa expressão é retornado automaticamente, sem necessidade de usar `return`.
+
+### Comandos
+
+* `lambda x: x * 2`: recebe um argumento e retorna seu dobro.
+* `lambda a, b: a + b`: recebe dois argumentos e retorna a soma.
+* `lambda: "Olá"`: função sem parâmetros.
+
+### Comparação com `def`
+
+Uma função criada com `lambda` pode substituir uma função simples criada com `def`. No entanto, `lambda` é indicada apenas para funções curtas, enquanto `def` é mais adequada para funções com múltiplas instruções ou reutilização.
+
+### Comandos
+
+* `def`: cria funções nomeadas, com múltiplas linhas e uso de `return`.
+* `lambda`: cria funções anônimas com uma única expressão.
+
+### Uso com funções embutidas
+
+As funções `lambda` são frequentemente utilizadas como argumento de funções que esperam outra função, como `sorted()`, `map()`, `filter()` e `max()`.
+
+### Comandos
+
+* `sorted(iterável, key=lambda ...)`: define o critério de ordenação.
+* `map(lambda ..., iterável)`: aplica uma transformação a cada elemento.
+* `filter(lambda ..., iterável)`: filtra elementos conforme uma condição.
+* `max(iterável, key=lambda ...)`: encontra o maior elemento com base em um critério.
+
+### Limitações
+
+Uma função `lambda` aceita apenas **uma única expressão**. Ela não permite múltiplas instruções, atribuições de variáveis (`=`), blocos de código ou o uso explícito de `return`.
+
+### Quando usar
+
+Utilize `lambda` para funções pequenas, temporárias e simples, principalmente quando forem usadas apenas uma vez. Para lógicas mais complexas, reutilização ou maior legibilidade, prefira criar funções com `def`.
+
+## Condição ternária
+
+A condição ternária é uma forma reduzida de escrever um `if...else` quando há apenas duas opções possíveis. Ela retorna um valor dependendo do resultado de uma condição.
+
+### Sintaxe
+
+```python
+valor_se_verdadeiro if condição else valor_se_falso
+```
+
+### Exemplos
+
+Verificar maioridade:
+
+```python
+status = "Maior de idade" if idade >= 18 else "Menor de idade"
+```
+
+Verificar número par:
+
+```python
+resultado = "Par" if numero % 2 == 0 else "Ímpar"
+```
+
+Escolher o maior número:
+
+```python
+maior = a if a > b else b
+```
+
+Imprimir diretamente:
+
+```python
+print("Aprovado" if nota >= 7 else "Reprovado")
+```
+
+### Quando utilizar
+
+* Quando existem apenas **duas possibilidades**.
+* Quando a expressão é simples e melhora a legibilidade.
+* Evite encadear muitas condições ternárias; nesses casos, prefira `if/elif/else`.
